@@ -6,9 +6,9 @@ https://github.com/fearless87/apex-logger.git
 git init
 git add --all
 git commit -m 'init'
-git remote add origin https://XXX@github.com/fearless87/apex-logger.git
+git remote add origin https://github.com/fearless87/apex-logger.git
 git remote rm origin 【若远程源已存在，则先删除】
-git push -u origin master
+git push -u origin master 【-f 强制，谨慎使用】
 
 ################ Scratch
 
