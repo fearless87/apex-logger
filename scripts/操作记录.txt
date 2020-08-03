@@ -1,0 +1,78 @@
+################ Git
+--地址
+https://github.com/fearless87/apex-logger.git
+
+--命令
+git init
+git add --all
+git commit -m 'init'
+git remote add origin https://XXX@github.com/fearless87/apex-logger.git
+git remote rm origin 【若远程源已存在，则先删除】
+git push -u origin master
+
+################ Scratch
+
+--登录并授权Dev Hub
+sfdx force:auth:web:login -d -a CZ
+参数：-d 设置为默认的Dev Hub，Sets the authenticated org as the default Dev Hub org for scratch org creation
+
+--查看Org
+sfdx force:org:list --all
+
+--创建Scratch Org
+sfdx force:org:create -f config/project-scratch-def.json -a OrgApexlogger -d 30 -v CZ
+
+--配置Scratch Org Definition File
+https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm
+Supported Languages("language": "en_US",)
+https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5
+
+--初始密码
+sfdx force:user:password:generate -u OrgApexlogger -v CZ
+
+--根据用户名查找密码
+sfdx force:user:display -u test-tixwbo6yxioe@example.com
+
+--查看Scratch Org完整信息【包括账号、密码】
+sfdx force:org:display -u OrgApexlogger
+
+--删除Scratch Org
+sfdx force:org:delete -u XXX
+
+--推送代码
+sfdx force:source:push -u OrgApexlogger
+
+--拉取代码【谨慎使用】
+sfdx force:source:pull -u OrgApexlogger
+
+--打开Scratch Org登录界面
+sfdx force:org:open -u OrgApexlogger
+
+################ Package
+
+--创建包
+sfdx force:package:create --name OrgApexlogger --description "Apex-logger provides log processing with different severity levels" --packagetype Unlocked --path force-app --nonamespace --targetdevhubusername CZ         
+
+--创建包的版本
+sfdx force:package:version:create -p OrgApexlogger -d force-app -k 1234567q --wait 10 -v CZ
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6F000004HAgkQAG
+
+--查看DevHub的包
+sfdx force:package:list -v CZ
+
+--设置包的版本为发布状态（此状态下才可安装到Production）
+sfdx force:package:version:promote -p OrgApexlogger@1.1.0-1 -v CZ
+
+################ 其它
+
+--单元测试
+sfdx force:apex:test:run -r human -c -u OrgApexlogger
+
+--versionNumber版本号格式
+Package version numbers use the format major.minor.patch.build. For example, if you released package 1.0.0.2, you could use 1.1.0.0, 2.0.0.0, or 1.0.1.0 for the next package version.
+https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_create_pkg_ver_update.htm
+
+--推送Package到新的Scratch Org
+sfdx force:package:install --wait 10 --publishwait 10 --package OrgApexlogger@1.0.0-1 -k 1234567q -r -u OrgLambdaTest
+
+

@@ -1,0 +1,18 @@
+{
+    "packageDirectories": [
+        {
+            "path": "force-app",
+            "default": true,
+            "package": "OrgApexlogger",
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT"
+        }
+    ],
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "48.0",
+    "packageAliases": {
+        "OrgApexlogger": "0Ho6F000000GmwFSAS",
+        "OrgApexlogger@1.0.0-1": "04t6F000004HAgkQAG"
+    }
+}
