@@ -15,7 +15,9 @@
 | `ApexLogger` 		    | 日志记录器类|
 | `ApexLoggerExceptionHandler` 		| ApexLogger异常处理类|
 ### （1）ApexLoggerUtil
-region {内部类
+<details>
+<summary>内部类</summary>
+
     * Caller 调用者实体类
     ~~~ C#
     public class Caller {
@@ -35,15 +37,21 @@ region {内部类
     caller.className = String.join(haystack, '.');
     }
     ~~~
-} region
 
+</details>
 ### （2）ApexLoggerData
-* 字段
+<details>
+<summary>字段</summary>
+
 ~~~ C#
 //自定义空白异常
 private static final Exception BLANK_EXCEPTION = null;
 ~~~
-* 属性
+
+<details>
+<details>
+<summary>属性</summary>
+
 ~~~ C#
 //通过System.debug输出
 public Boolean OutputSystemDebugLogs{get;set;}
@@ -64,7 +72,11 @@ public Boolean IsBatches{get;set;}
 //ApexLog待处理集合
 public List<Apex_Log__c> ApexBatches{get;set;}
 ~~~
-* 方法
+
+<details>
+<details>
+<summary>方法</summary>
+
 ~~~ C#
 //构造方法
 public ApexLoggerData() {
@@ -95,6 +107,8 @@ public void flush() {
 //获取友好的异常【给到View】
 public String getFriendlyExceptionMessage(String exceptionType){
 ~~~
+
+<details>
 ### （3）ApexLogger
 * 枚举
 ~~~ C#
