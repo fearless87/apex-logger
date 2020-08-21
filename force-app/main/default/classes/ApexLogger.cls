@@ -41,11 +41,7 @@ public class ApexLogger {
     this.debug(messageFormat, arguments, BLANK_EXCEPTION);
   }
 
-  public void debug(
-    String messageFormat,
-    Object[] arguments,
-    Exception thrownException
-  ) {
+  public void debug(String messageFormat,Object[] arguments,Exception thrownException) {
     this.debug(String.format(messageFormat, arguments), thrownException);
   }
 
@@ -67,11 +63,7 @@ public class ApexLogger {
     this.info(messageFormat, arguments, BLANK_EXCEPTION);
   }
 
-  public void info(
-    String messageFormat,
-    Object[] arguments,
-    Exception thrownException
-  ) {
+  public void info(String messageFormat,Object[] arguments,Exception thrownException) {
     this.info(String.format(messageFormat, arguments), thrownException);
   }
 
@@ -93,11 +85,7 @@ public class ApexLogger {
     this.warn(messageFormat, arguments, BLANK_EXCEPTION);
   }
 
-  public void warn(
-    String messageFormat,
-    Object[] arguments,
-    Exception thrownException
-  ) {
+  public void warn(String messageFormat,Object[] arguments,Exception thrownException) {
     this.warn(String.format(messageFormat, arguments), thrownException);
   }
 
@@ -119,11 +107,7 @@ public class ApexLogger {
     this.error(messageFormat, arguments, BLANK_EXCEPTION);
   }
 
-  public void error(
-    String messageFormat,
-    Object[] arguments,
-    Exception thrownException
-  ) {
+  public void error(String messageFormat,Object[] arguments,Exception thrownException) {
     this.error(String.format(messageFormat, arguments), thrownException);
   }
 
@@ -171,12 +155,7 @@ public class ApexLogger {
     this.log(severity, formatMessage, arguments, BLANK_EXCEPTION);
   }
 
-  public void log(
-    String severity,
-    String formatMessage,
-    Object[] arguments,
-    Exception thrownException
-  ) {
+  public void log(String severity,String formatMessage,Object[] arguments,Exception thrownException) {
     this.log(
       severity,
       String.format(formatMessage, arguments),
@@ -184,31 +163,15 @@ public class ApexLogger {
     );
   }
 
-  public void log(
-    String severity,
-    String className,
-    String methodName,
-    Exception thrownException
-  ) {
+  public void log(String severity,String className,String methodName,Exception thrownException) {
     this.log(severity, className, methodName, null, thrownException);
   }
 
-  public void log(
-    String severity,
-    String className,
-    String methodName,
-    String message
-  ) {
+  public void log(String severity,String className,String methodName,String message) {
     this.log(severity, className, methodName, message, BLANK_EXCEPTION);
   }
 
-  public void log(
-    String severity,
-    String className,
-    String methodName,
-    String formatMessage,
-    Object[] arguments
-  ) {
+  public void log(String severity,String className,String methodName,String formatMessage,Object[] arguments) {
     this.log(
       severity,
       className,
@@ -219,14 +182,7 @@ public class ApexLogger {
     );
   }
 
-  public void log(
-    String severity,
-    String className,
-    String methodName,
-    String formatMessage,
-    Object[] arguments,
-    Exception thrownException
-  ) {
+  public void log(String severity,String className,String methodName,String formatMessage,Object[] arguments,Exception thrownException) {
     this.log(
       severity,
       className,
@@ -245,13 +201,7 @@ public class ApexLogger {
   /// <param name="message">自定义消息</param>
   /// <param name="thrownException">异常</param>
   /// <returns></returns>
-  public void log(
-    String severity,
-    String className,
-    String methodName,
-    String message,
-    Exception thrownException
-  ) {
+  public void log(String severity,String className,String methodName,String message,Exception thrownException) {
     this.curApexLoggerData.Savelog(
       severity,
       className,

@@ -36,9 +36,150 @@
     }
     ~~~
 ### （2）ApexLoggerData
-TODO
+* 字段
+~~~ C#
+//自定义空白异常
+private static final Exception BLANK_EXCEPTION = null;
+~~~
+* 属性
+~~~ C#
+//通过System.debug输出
+public Boolean OutputSystemDebugLogs{get;set;}
+//记录到Database
+public Boolean OutputDatabaseLogs{get;set;}
+//仅记录指定Class的Logs
+public Boolean OutputOnlySpecifyClassLogs{get;set;}
+//界面显示异常
+public Boolean UIShowException{get;set;}
+//界面输出详细Exceptions
+public Boolean UIDisplayDetailExceptions{get;set;}
+//界面输出友好Exceptions
+public Boolean UIDisplayFriendlyExceptions{get;set;}
+//指定Class
+public String SpecifyClasses{get;set;}
+//是否分批处理
+public Boolean IsBatches{get;set;}
+//ApexLog待处理集合
+public List<Apex_Log__c> ApexBatches{get;set;}
+~~~
+* 方法
+~~~ C#
+//构造方法
+public ApexLoggerData() {
+    IsBatches=false;
+    ApexBatches=new List<Apex_Log__c>();
+    initApexLogSetting();
+}
+//初始化
+private void initApexLogSetting(){
+//获取配置信息
+private List<Apex_Log_Setting__mdt> getConfiguration() {
+//保存Log
+public void Savelog(String severity, String className, String methodName, String message, Exception thrownException) {
+//获取日志消息
+private String getLogMessage(String message, Exception thrownException) {
+//获取异常消息
+private String getExceptionMessage(Exception thrownException) {
+//通过System.debug输出
+private void systemDebug(String message,String exceptionMessage,String severity){
+//获取System.debug输出的LoggingLevel
+private LoggingLevel severityToLoggingLevel(String severity) {
+//记录到Database
+private void saveToDatabase(Apex_Log__c log){
+//是否记录当前Class到Database
+private Boolean isRecordCurClass(String className){
+//批量保存并刷新
+public void flush() {
+//获取友好的异常【给到View】
+public String getFriendlyExceptionMessage(String exceptionType){
+~~~
 ### （3）ApexLogger
-TODO
+* 枚举
+~~~ C#
+ //日志严重类别
+public enum LogSeverity {
+    DEBUG,INFO,WARN,ERROR
+}
+~~~
+* 字段
+~~~ C#
+//自定义空白异常
+private static final Exception BLANK_EXCEPTION = null;
+//ApexLogger数据类
+private ApexLoggerData curApexLoggerData;
+~~~
+* 构造器
+~~~ C#
+//构造方法
+public ApexLogger() {
+//构造方法
+public ApexLogger(Boolean isBatch) {
+~~~
+* log 创建日志的重载
+~~~ C#
+/// <summary>
+/// 创建日志
+/// </summary>
+/// <param name="severity">严重级别</param>
+/// <param name="className">类名</param>
+/// <param name="methodName">方法名</param>
+/// <param name="message">自定义消息</param>
+/// <param name="thrownException">异常</param>
+/// <returns></returns>
+public void log(String severity,String className,String methodName,String message,Exception thrownException) {
+public void log(String severity,String className,String methodName,String formatMessage,Object[] arguments,Exception thrownException) {
+public void log(String severity,String className,String methodName,String formatMessage,Object[] arguments) {
+public void log(String severity,String className,String methodName,String message) {
+public void log(String severity,String className,String methodName,Exception thrownException) {
+public void log(String severity,String formatMessage,Object[] arguments,Exception thrownException) {
+public void log(String severity, String formatMessage, Object[] arguments) {
+public void log(String severity, String message, Exception thrownException) {
+public void log(String severity, Exception thrownException) {
+public void log(String severity, String message) {
+~~~
+* DEBUG严重级的重载
+~~~ C#
+public void debug(String message) {
+public void debug(Exception thrownException) {
+public void debug(String messageFormat, Object[] arguments) {
+public void debug(String messageFormat,Object[] arguments,Exception thrownException) {
+public void debug(String message, Exception thrownException) {
+~~~
+* INFO严重级的重载
+~~~ C#
+public void info(String message) {
+public void info(Exception thrownException) {
+public void info(String messageFormat, Object[] arguments) {
+public void info(String messageFormat,Object[] arguments,Exception thrownException) {
+public void info(String message, Exception thrownException) {
+~~~
+* WARN严重级的重载
+~~~ C#
+public void warn(String message) {
+public void warn(Exception thrownException) {
+public void warn(String messageFormat, Object[] arguments) {
+public void warn(String messageFormat,Object[] arguments,Exception thrownException) {
+public void warn(String message, Exception thrownException) {
+~~~
+* ERROR严重级的重载
+~~~ C#
+public void error(String message) {
+public void error(Exception thrownException) {
+public void error(String messageFormat, Object[] arguments) {
+public void error(String messageFormat,Object[] arguments,Exception thrownException) {
+public void error(String message, Exception thrownException) {
+~~~
+* 记录LIMITS
+~~~ C#
+public void limits() {
+public void limits(String messageFormat, Object[] arguments) {
+public void limits(String message) {
+~~~
+* 其它
+~~~ C#
+//批量保存
+public void flush() {
+~~~
 ### （4）ApexLoggerExceptionHandler
 TODO
 

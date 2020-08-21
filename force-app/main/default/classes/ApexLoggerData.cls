@@ -75,12 +75,12 @@ public class ApexLoggerData {
     
     //保存Log
     public void Savelog(String severity, String className, String methodName, String message, Exception thrownException) {
-        String exceptionMessage=buildExceptionMessage(thrownException);
+        String exceptionMessage=getExceptionMessage(thrownException);
 		Apex_Log__c log = new Apex_Log__c(
 			Severity__c = severity,
 			Class__c = className,
 			Method__c = methodName,
-			Message__c = buildLogMessage(message, thrownException),
+			Message__c = getLogMessage(message, thrownException),
 			Exception__c = exceptionMessage,
             WithException__c = (thrownException == BLANK_EXCEPTION) ? false : true,
             ExceptionType__c= (thrownException == BLANK_EXCEPTION) ? '':thrownException.getTypeName()
@@ -89,12 +89,43 @@ public class ApexLoggerData {
         saveToDatabase(log);
     }
 
+    //获取日志消息
+    private String getLogMessage(String message, Exception thrownException) {
+		if (String.isBlank(message)) {
+			message = 'Exception thrown: ' + thrownException.getTypeName();
+		}
+		return message;
+    }
+    
+    //获取异常消息
+	private String getExceptionMessage(Exception thrownException) {
+		String message = '';
+		while (thrownException != BLANK_EXCEPTION && thrownException != null) {
+			message += thrownException.getTypeName() + ': ' + thrownException.getMessage() + '\n';
+			message += thrownException.getStackTraceString() + '\n\n';
+			thrownException = thrownException.getCause();
+		}
+		return message;
+    }
+
     //通过System.debug输出
     private void systemDebug(String message,String exceptionMessage,String severity){
 		if (this.OutputSystemDebugLogs) {
             System.debug(severityToLoggingLevel(severity), (String.isEmpty(message)?'':message+'\n')+exceptionMessage);
         }
     }
+
+    //获取System.debug输出的LoggingLevel
+    private LoggingLevel severityToLoggingLevel(String severity) {
+		switch on severity {
+			when 'DEBUG' { return LoggingLevel.DEBUG; }
+			when 'INFO' { return LoggingLevel.INFO; }
+			when 'WARN' { return LoggingLevel.WARN; }
+			when 'ERROR' { return LoggingLevel.ERROR; }
+			when else { return LoggingLevel.DEBUG; }
+		}
+    }
+
     //记录到Database
     private void saveToDatabase(Apex_Log__c log){
         //记录到Database
@@ -112,7 +143,7 @@ public class ApexLoggerData {
         }
     }
 
-    //是否记录当前Class
+    //是否记录当前Class到Database
     private Boolean isRecordCurClass(String className){
         Boolean result=true;
         if(this.OutputOnlySpecifyClassLogs){
@@ -135,37 +166,7 @@ public class ApexLoggerData {
 		}
 	}
     
-    //构建错误消息
-    private String buildLogMessage(String message, Exception thrownException) {
-		if (String.isBlank(message)) {
-			message = 'Exception thrown: ' + thrownException.getTypeName();
-		}
-		return message;
-	}
-    
-    //获取LoggingLevel
-    private LoggingLevel severityToLoggingLevel(String severity) {
-		switch on severity {
-			when 'DEBUG' { return LoggingLevel.DEBUG; }
-			when 'INFO' { return LoggingLevel.INFO; }
-			when 'WARN' { return LoggingLevel.WARN; }
-			when 'ERROR' { return LoggingLevel.ERROR; }
-			when else { return LoggingLevel.DEBUG; }
-		}
-    }
-    
-    //构建异常消息
-	private String buildExceptionMessage(Exception thrownException) {
-		String message = '';
-		while (thrownException != BLANK_EXCEPTION && thrownException != null) {
-			message += thrownException.getTypeName() + ': ' + thrownException.getMessage() + '\n';
-			message += thrownException.getStackTraceString() + '\n\n';
-			thrownException = thrownException.getCause();
-		}
-		return message;
-    }
-    
-    //获取友好的异常
+    //获取友好的异常【给到View】
     public String getFriendlyExceptionMessage(String exceptionType){
         String message='';
         for(Schema.PicklistEntry pickItem: Apex_Log__c.ExceptionType__c.getDescribe().getPicklistValues()){
