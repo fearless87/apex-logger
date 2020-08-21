@@ -48,7 +48,7 @@
 private static final Exception BLANK_EXCEPTION = null;
 ~~~
 
-<details>
+</details>
 <details>
 <summary>属性</summary>
 
@@ -73,7 +73,7 @@ public Boolean IsBatches{get;set;}
 public List<Apex_Log__c> ApexBatches{get;set;}
 ~~~
 
-<details>
+</details>
 <details>
 <summary>方法</summary>
 
@@ -108,7 +108,7 @@ public void flush() {
 public String getFriendlyExceptionMessage(String exceptionType){
 ~~~
 
-<details>
+</details>
 ### （3）ApexLogger
 * 枚举
 ~~~ C#
