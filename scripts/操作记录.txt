@@ -55,7 +55,7 @@ sfdx force:package:create --name OrgApexlogger --description "Apex-logger provid
 
 --创建包的版本
 sfdx force:package:version:create -p OrgApexlogger -d force-app -k 1234567q --wait 10 -v CZ
-https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6F000004HAgkQAG
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6F000004HAjyQAG
 
 --查看DevHub的包
 sfdx force:package:list -v CZ

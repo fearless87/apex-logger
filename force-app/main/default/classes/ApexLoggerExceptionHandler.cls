@@ -70,7 +70,7 @@ public virtual class ApexLoggerExceptionHandler {
   }
 
   //获取含明细的异常消息
-  public String getComplexMessage(Exception ex) {
+  public virtual String getComplexMessage(Exception ex) {
     String out =
       ex.getTypeName() +
       LINE_BREAK +
