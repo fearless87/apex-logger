@@ -4,7 +4,7 @@
 */
 public virtual class ApexLoggerExceptionHandler {
   //自定义空白异常
-  private static final ApexLoggerUtil.BlankException BLANK_EXCEPTION = new ApexLoggerUtil.BlankException();
+  private static final Exception BLANK_EXCEPTION = null;
   private static final String LINE_BREAK = '\r\n';
   private Exception curException;
   private String customMessage;
@@ -66,7 +66,7 @@ public virtual class ApexLoggerExceptionHandler {
 
   //获取简单的异常消息
   public virtual String getSimpleMessage(Exception ex) {
-    return ex.getMessage();
+    return ex==BLANK_EXCEPTION?'':ex.getMessage();
   }
 
   //获取含明细的异常消息

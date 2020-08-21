@@ -4,7 +4,7 @@
 */
 public class ApexLoggerData {
     //自定义空白异常
-    private static final ApexLoggerUtil.BlankException BLANK_EXCEPTION = new ApexLoggerUtil.BlankException();
+    private static final Exception BLANK_EXCEPTION = null;
 
     //通过System.debug输出
     public Boolean OutputSystemDebugLogs{get;set;}
@@ -83,7 +83,7 @@ public class ApexLoggerData {
 			Message__c = buildLogMessage(message, thrownException),
 			Exception__c = exceptionMessage,
             WithException__c = (thrownException == BLANK_EXCEPTION) ? false : true,
-            ExceptionType__c=thrownException.getTypeName()
+            ExceptionType__c= (thrownException == BLANK_EXCEPTION) ? '':thrownException.getTypeName()
         );
         systemDebug(message,exceptionMessage,log.Severity__c);
         saveToDatabase(log);

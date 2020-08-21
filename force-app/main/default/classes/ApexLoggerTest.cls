@@ -19,7 +19,7 @@ private class ApexLoggerTest {
 		ApexLogger logger = new ApexLogger(true);
 
 		String message='message';
-		ApexLoggerUtil.BlankException thrownException=new ApexLoggerUtil.BlankException('');
+		BlankException thrownException=new BlankException('');
 		String messageFormat='field name:{0},error type:{1}';
 		Object[] arguments=new Object[]{'Price__c','String'};
 
@@ -37,7 +37,7 @@ private class ApexLoggerTest {
 		System.assertEquals(5, logs.size());
 		// for(Integer i=0;i<5;i++) //SystemModstamp、LastMofiedDate直到秒
 		// 	System.debug('test:'+logs[i].SystemModstamp+':'+logs[i].Message__c);
-		System.assertEquals('Exception thrown: ApexLoggerUtil.BlankException', logs[4].Message__c);
+		System.assertEquals('Exception thrown: ApexLoggerTest.BlankException', logs[4].Message__c);
 	}
 
 	//测试info
@@ -46,7 +46,7 @@ private class ApexLoggerTest {
 		ApexLogger logger = new ApexLogger(true);
 
 		String message='message';
-		ApexLoggerUtil.BlankException thrownException=new ApexLoggerUtil.BlankException(message);
+		BlankException thrownException=new BlankException(message);
 		String messageFormat='field name:{0},error type:{1}';
 		Object[] arguments=new Object[]{'Price__c','String'};
 
@@ -70,7 +70,7 @@ private class ApexLoggerTest {
 		ApexLogger logger = new ApexLogger(true);
 
 		String message='message';
-		ApexLoggerUtil.BlankException thrownException=new ApexLoggerUtil.BlankException(message);
+		BlankException thrownException=new BlankException(message);
 		String messageFormat='field name:{0},error type:{1}';
 		Object[] arguments=new Object[]{'Price__c','String'};
 
@@ -94,7 +94,7 @@ private class ApexLoggerTest {
 		ApexLogger logger = new ApexLogger(true);
 
 		String message='message';
-		ApexLoggerUtil.BlankException thrownException=new ApexLoggerUtil.BlankException(message);
+		BlankException thrownException=new BlankException(message);
 		String messageFormat='field name:{0},error type:{1}';
 		Object[] arguments=new Object[]{'Price__c','String'};
 
@@ -137,7 +137,7 @@ private class ApexLoggerTest {
 		String className='className';
 		String methodName='methodName';
 		String message='message';
-		ApexLoggerUtil.BlankException thrownException=new ApexLoggerUtil.BlankException(message);
+		BlankException thrownException=new BlankException(message);
 		String formatMessage='field name:{0},error type:{1}';
 		Object[] arguments=new Object[]{'Price__c','String'};
 
@@ -164,7 +164,7 @@ private class ApexLoggerTest {
 	@isTest
 	static void apexLoggerExceptionHandlerTest()
 	{
-		ApexLoggerUtil.BlankException thrownException=new ApexLoggerUtil.BlankException('message');
+		BlankException thrownException=new BlankException('message');
 		
 		Test.startTest();
 		ApexLoggerExceptionHandler handlerObj=new ApexLoggerExceptionHandler(thrownException);
@@ -180,4 +180,7 @@ private class ApexLoggerTest {
 		// System.assert(logs.size()>=1);
 	}
 
+	//自定义BlankException
+	public class BlankException extends Exception {
+	}
 }

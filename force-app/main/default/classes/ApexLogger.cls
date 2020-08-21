@@ -3,13 +3,12 @@
 	创建标识：hpc 2020-08
  */
 public class ApexLogger {
-  public static final String DEBUG = 'DEBUG';
-  public static final String INFO = 'INFO';
-  public static final String WARN = 'WARN';
-  public static final String ERROR = 'ERROR';
-
+  //日志严重类别
+  public enum LogSeverity {
+    DEBUG,INFO,WARN,ERROR
+  }
   //自定义空白异常
-  private static final ApexLoggerUtil.BlankException BLANK_EXCEPTION = new ApexLoggerUtil.BlankException();
+  private static final Exception BLANK_EXCEPTION = null;
   //ApexLogger数据类
   private ApexLoggerData curApexLoggerData;
   //构造方法
@@ -51,7 +50,7 @@ public class ApexLogger {
   }
 
   public void debug(String message, Exception thrownException) {
-    this.log(ApexLogger.DEBUG, message, thrownException);
+    this.log(ApexLogger.LogSeverity.DEBUG.name(), message, thrownException);
   }
 
   /* INFO */
@@ -77,7 +76,7 @@ public class ApexLogger {
   }
 
   public void info(String message, Exception thrownException) {
-    this.log(ApexLogger.INFO, message, thrownException);
+    this.log(ApexLogger.LogSeverity.INFO.name(), message, thrownException);
   }
 
   /* WARN */
@@ -103,7 +102,7 @@ public class ApexLogger {
   }
 
   public void warn(String message, Exception thrownException) {
-    this.log(ApexLogger.WARN, message, thrownException);
+    this.log(ApexLogger.LogSeverity.WARN.name(), message, thrownException);
   }
 
   /* ERROR */
@@ -129,7 +128,7 @@ public class ApexLogger {
   }
 
   public void error(String message, Exception thrownException) {
-    this.log(ApexLogger.ERROR, message, thrownException);
+    this.log(ApexLogger.LogSeverity.ERROR.name(), message, thrownException);
   }
 
   /* LIMITS */

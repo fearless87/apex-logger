@@ -51,8 +51,4 @@ public class ApexLoggerUtil {
       this.methodName = methodName;
     }
   }
-
-  //自定义BlankException
-  public class BlankException extends Exception {
-  }
 }
