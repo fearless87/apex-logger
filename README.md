@@ -15,9 +15,7 @@
 | `ApexLogger` 		    | 日志记录器类|
 | `ApexLoggerExceptionHandler` 		| ApexLogger异常处理类|
 ### （1）ApexLoggerUtil
-<details>
-<summary>内部类</summary>
-
+region {内部类
     * Caller 调用者实体类
     ~~~ C#
     public class Caller {
@@ -37,7 +35,7 @@
     caller.className = String.join(haystack, '.');
     }
     ~~~
-</details>
+} region
 
 ### （2）ApexLoggerData
 * 字段
