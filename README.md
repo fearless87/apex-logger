@@ -39,6 +39,7 @@
     ~~~
 
 </details>
+
 ### （2）ApexLoggerData
 <details>
 <summary>字段</summary>
@@ -49,6 +50,7 @@ private static final Exception BLANK_EXCEPTION = null;
 ~~~
 
 </details>
+
 <details>
 <summary>属性</summary>
 
@@ -74,6 +76,7 @@ public List<Apex_Log__c> ApexBatches{get;set;}
 ~~~
 
 </details>
+
 <details>
 <summary>方法</summary>
 
@@ -109,6 +112,7 @@ public String getFriendlyExceptionMessage(String exceptionType){
 ~~~
 
 </details>
+
 ### （3）ApexLogger
 * 枚举
 ~~~ C#
