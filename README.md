@@ -16,7 +16,8 @@
 | `ApexLoggerExceptionHandler` 		| ApexLogger异常处理类|
 ### （1）ApexLoggerUtil
 <details>
-<summary>* 内部类</summary>
+<summary>内部类</summary>
+
     * Caller 调用者实体类
     ~~~ C#
     public class Caller {
