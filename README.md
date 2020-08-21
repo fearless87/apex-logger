@@ -9,7 +9,7 @@
 ## 1、类
 <a name="is-class"></a>
 | 类名 | 描述 |
-|-------------------|--------|-------------|
+|-------------------|-------------|
 | `ApexLoggerUtil` 		| ApexLogger工具类|
 | `ApexLoggerData` 		| ApexLogger数据类|
 | `ApexLogger` 		    | 日志记录器类|
@@ -55,6 +55,7 @@ Enabled__c=true则为开启，若Output_Only_Specify_Class_Logs为开启则对�
 
 
 ## 3、示例
+<a name="is-example"></a>
 ### （1）直接使用
 以info为列，debug、warn、error使用方式相同
 ~~~ C#
