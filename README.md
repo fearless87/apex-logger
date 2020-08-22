@@ -1,6 +1,6 @@
 # apex-logger
 包括各级别日志记录、系统&amp;DB输出开关、UI友好异常提示、特定Class日志记录等
-###### $\color{red}{可以直接打包为unlocked packages(命令见 scripts/操作记录.txt)，单元测试覆盖率为95%}$
+<font size=2>`可以直接打包为unlocked packages(命令见 scripts/操作记录.txt)，单元测试覆盖率为95%`</font>
 
 ## 目录
 - [`类`](#is-class)
@@ -371,6 +371,6 @@ try{
     <!-- ![](https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png) -->
     * <img src="https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png" width="50%">
 
-$\color{red}{注意}$：可重写ApexLoggerExceptionHandler做自定义异常处理 
-<!-- <font style='font-weight:bold;color:red;' >注意</font>：可重写ApexLoggerExceptionHandler做自定义异常处理 --github没有显示颜色及粗体 -->
+**注意**：可重写ApexLoggerExceptionHandler做自定义异常处理 
+<!-- <font style='font-weight:bold;color:red;' >注意</font>：可重写ApexLoggerExceptionHandler做自定义异常处理 --github不支持color -->
 
