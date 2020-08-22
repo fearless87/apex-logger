@@ -6,8 +6,8 @@
 - [`数据结构`](#is-data)
 - [`示例`](#is-example)
 
-## 1、类
 <a name="is-class"></a>
+## 1、类
 | 类名 | 描述 |
 |-------------------|-------------|
 | `ApexLoggerUtil` 		| ApexLogger工具类|
@@ -311,8 +311,8 @@ public virtual String getUIExceptionMessage() {
 
 </details>
 
-## 2、数据结构
 <a name="is-data"></a>
+## 2、数据结构
 Custom Metadata做开关及特定Class的配置,Custom Object记录日志
 ### （1）整体结构如下
 ![](https://github.com/fearless87/apex-logger/blob/master/image/db-log.png)
@@ -321,9 +321,8 @@ Custom Metadata做开关及特定Class的配置,Custom Object记录日志
 Enabled__c=true则为开启，若Output_Only_Specify_Class_Logs为开启则对仅其SpecifyClasses__c指定的Class的日志记录到DB
 ![](https://github.com/fearless87/apex-logger/blob/master/image/log-setting.png)
 
-
-## 3、示例
 <a name="is-example"></a>
+## 3、示例
 ### （1）直接使用
 以info为列，debug、warn、error使用方式相同
 ~~~ C#
