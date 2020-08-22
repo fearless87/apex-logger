@@ -114,28 +114,45 @@ public String getFriendlyExceptionMessage(String exceptionType){
 </details>
 
 ### （3）ApexLogger
-* 枚举
+<details>
+<summary>枚举</summary>
+
 ~~~ C#
  //日志严重类别
 public enum LogSeverity {
     DEBUG,INFO,WARN,ERROR
 }
 ~~~
-* 字段
+
+</details>
+
+<details>
+<summary>字段</summary>
+
 ~~~ C#
 //自定义空白异常
 private static final Exception BLANK_EXCEPTION = null;
 //ApexLogger数据类
 private ApexLoggerData curApexLoggerData;
 ~~~
-* 构造器
+
+</details>
+
+<details>
+<summary>构造器</summary>
+
 ~~~ C#
 //构造方法
 public ApexLogger() {
 //构造方法
 public ApexLogger(Boolean isBatch) {
 ~~~
-* log 创建日志的重载
+
+</details>
+
+<details>
+<summary>log 创建日志的重载</summary>
+
 ~~~ C#
 /// <summary>
 /// 创建日志
@@ -157,7 +174,12 @@ public void log(String severity, String message, Exception thrownException) {
 public void log(String severity, Exception thrownException) {
 public void log(String severity, String message) {
 ~~~
-* DEBUG严重级的重载
+
+</details>
+
+<details>
+<summary>DEBUG严重级的重载</summary>
+
 ~~~ C#
 public void debug(String message) {
 public void debug(Exception thrownException) {
@@ -165,7 +187,12 @@ public void debug(String messageFormat, Object[] arguments) {
 public void debug(String messageFormat,Object[] arguments,Exception thrownException) {
 public void debug(String message, Exception thrownException) {
 ~~~
-* INFO严重级的重载
+
+</details>
+
+<details>
+<summary>INFO严重级的重载</summary>
+
 ~~~ C#
 public void info(String message) {
 public void info(Exception thrownException) {
@@ -173,7 +200,12 @@ public void info(String messageFormat, Object[] arguments) {
 public void info(String messageFormat,Object[] arguments,Exception thrownException) {
 public void info(String message, Exception thrownException) {
 ~~~
-* WARN严重级的重载
+
+</details>
+
+<details>
+<summary>WARN严重级的重载</summary>
+
 ~~~ C#
 public void warn(String message) {
 public void warn(Exception thrownException) {
@@ -181,7 +213,12 @@ public void warn(String messageFormat, Object[] arguments) {
 public void warn(String messageFormat,Object[] arguments,Exception thrownException) {
 public void warn(String message, Exception thrownException) {
 ~~~
-* ERROR严重级的重载
+
+</details>
+
+<details>
+<summary>ERROR严重级的重载</summary>
+
 ~~~ C#
 public void error(String message) {
 public void error(Exception thrownException) {
@@ -189,17 +226,30 @@ public void error(String messageFormat, Object[] arguments) {
 public void error(String messageFormat,Object[] arguments,Exception thrownException) {
 public void error(String message, Exception thrownException) {
 ~~~
-* 记录LIMITS
+
+</details>
+
+<details>
+<summary>记录LIMITS</summary>
+
 ~~~ C#
 public void limits() {
 public void limits(String messageFormat, Object[] arguments) {
 public void limits(String message) {
 ~~~
-* 其它
+
+</details>
+
+<details>
+<summary>其它</summary>
+
 ~~~ C#
 //批量保存
 public void flush() {
 ~~~
+
+</details>
+
 ### （4）ApexLoggerExceptionHandler
 TODO
 
