@@ -313,13 +313,24 @@ public virtual String getUIExceptionMessage() {
 
 <a name="is-data"></a>
 ## 2、数据结构
-Custom Metadata做开关及特定Class的配置,Custom Object记录日志
-### （1）整体结构如下
-![](https://github.com/fearless87/apex-logger/blob/master/image/db-log.png)
+| 数据表 | 描述 |
+|-------------------|-------------|
+| `Apex_Log_Setting__mdt` 		| 日志配置|
+| `Apex_Log__c` 		| 日志记录|
 
-### （2）开关
-Enabled__c=true则为开启，若Output_Only_Specify_Class_Logs为开启则对仅其SpecifyClasses__c指定的Class的日志记录到DB
-![](https://github.com/fearless87/apex-logger/blob/master/image/log-setting.png)
+### （1）ER图
+<!-- ![](https://github.com/fearless87/apex-logger/blob/master/image/db-log.png) -->
+<img src="https://github.com/fearless87/apex-logger/blob/master/image/db-log.png" width="50%">
+
+### （2）日志配置
+* `Enabled__c`：代表开关是否开启 =true则为开启，若Output_Only_Specify_Class_Logs为开启则对仅其SpecifyClasses__c指定的Class的日志记录到DB
+* `DeveloperName`：代表哪种类型的开关
+    * Output_System_Debug_Logs 通过System.debug输出
+    * Output_Database_Logs 记录到Database
+    * Output_Only_Specify_Class_Logs 仅记录指定Class的Logs，SpecifyClasses__c为指定的Class(逗号分隔)
+    * UI_Show_Exception 界面显示异常
+    * UI_Display_Detail_Exceptions 界面输出详细Exceptions
+    * UI_Display_Friendly_Exceptions 界面输出友好Exceptions【它的优先级高于详细】
 
 <a name="is-example"></a>
 ## 3、示例
