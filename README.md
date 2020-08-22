@@ -1,6 +1,6 @@
 # apex-logger
 包括各级别日志记录、系统&amp;DB输出开关、UI友好异常提示、特定Class日志记录等
-<font size=2>`可以直接打包为unlocked packages(命令见 scripts/操作记录.txt)，单元测试覆盖率为95%`</font>
+<font size=2>`可以直接打包为unlocked packages(命令见` [scripts/操作记录.txt](https://github.com/fearless87/apex-logger/blob/master/scripts/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95.txt) `)，单元测试覆盖率为95%`</font>
 
 ## 目录
 - [`类`](#is-class)
