@@ -251,8 +251,65 @@ public void flush() {
 </details>
 
 ### （4）ApexLoggerExceptionHandler
-TODO
+<details>
+<summary>字段</summary>
 
+~~~ C#
+//自定义空白异常
+private static final Exception BLANK_EXCEPTION = null;
+private static final String LINE_BREAK = '\r\n';
+private Exception curException;
+private String customMessage;
+private ApexPages.Severity curSeverity;
+private static final ApexPages.Severity defaultSeverity=ApexPages.Severity.ERROR;
+//ApexLogger数据类
+private ApexLoggerData curApexLoggerData;
+~~~
+
+</details>
+
+<details>
+<summary>构造器</summary>
+
+~~~ C#
+/// <summary>
+/// 构造方法
+/// </summary>
+/// <param name="ex">异常</param>
+/// <param name="message">自定义消息</param>
+/// <param name="severity">ApexPages.Severity 严重性</param>
+/// <returns></returns>
+public ApexLoggerExceptionHandler(Exception ex,String message,ApexPages.Severity severity) {
+public ApexLoggerExceptionHandler(String message) {
+public ApexLoggerExceptionHandler(String message,ApexPages.Severity severity) {
+public ApexLoggerExceptionHandler(Exception ex) {
+public ApexLoggerExceptionHandler(Exception ex,ApexPages.Severity severity) {
+public ApexLoggerExceptionHandler(Exception ex, String message) {
+~~~
+
+</details>
+
+<details>
+<summary>方法</summary>
+
+~~~ C#
+//保存异常日志
+public virtual void saveExceptionLog(String message,Exception ex){
+//显示异常到UI
+public virtual void showExceptionUI(){
+//获取简单的异常消息
+public virtual String getSimpleMessage(Exception ex) {
+//获取含明细的异常消息
+public virtual String getComplexMessage(Exception ex) {
+//获取友好的异常消息
+public virtual String getFriendlyMessage(String exceptionType) {
+//UI(apex:messages)显示异常
+private void uishow() {
+//获取UI异常消息(优先级为：自定义的>友好Exceptions>详细Exceptions>简单的消息)
+public virtual String getUIExceptionMessage() {
+~~~
+
+</details>
 
 ## 2、数据结构
 <a name="is-data"></a>

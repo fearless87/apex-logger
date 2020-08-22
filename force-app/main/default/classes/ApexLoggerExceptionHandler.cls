@@ -34,13 +34,9 @@ public virtual class ApexLoggerExceptionHandler {
   /// </summary>
   /// <param name="ex">异常</param>
   /// <param name="message">自定义消息</param>
-  /// <param name="severity">严重性</param>
+  /// <param name="severity">ApexPages.Severity 严重性</param>
   /// <returns></returns>
-  public ApexLoggerExceptionHandler(
-    Exception ex,
-    String message,
-    ApexPages.Severity severity
-  ) {
+  public ApexLoggerExceptionHandler(Exception ex,String message,ApexPages.Severity severity) {
     this.customMessage = message;
     this.curException = ex;
     this.curSeverity = severity;
@@ -48,16 +44,16 @@ public virtual class ApexLoggerExceptionHandler {
 
     //保存异常到日志
     saveExceptionLog(message,ex);
-    //界面显示异常
+    //显示异常到UI
     showExceptionUI();
   }
 
-  //保存异常到日志
+  //保存异常日志
   public virtual void saveExceptionLog(String message,Exception ex){
     new ApexLogger().error(message, ex);
   }
 
-  //界面显示异常
+  //显示异常到UI
   public virtual void showExceptionUI(){
     if (curApexLoggerData.UIShowException) {
       uishow();
@@ -91,7 +87,7 @@ public virtual class ApexLoggerExceptionHandler {
     );
   }
 
-  //显示异常
+  //UI(apex:messages)显示异常
   private void uishow() {
     Pagereference curPage = ApexPages.currentPage();
     if (curPage != null) {
