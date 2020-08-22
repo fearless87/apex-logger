@@ -231,7 +231,7 @@ public void error(String message, Exception thrownException) {
 </details>
 
 <details>
-<summary>记录LIMITS</summary>
+<summary>记录LIMITS的重载</summary>
 
 ~~~ C#
 public void limits() {
@@ -326,12 +326,13 @@ public virtual String getUIExceptionMessage() {
 ### （2）日志配置
 * `Enabled__c`：代表开关是否开启 =true则为开启，若Output_Only_Specify_Class_Logs为开启则对仅其SpecifyClasses__c指定的Class的日志记录到DB
 * `DeveloperName`：代表哪种类型的开关
+    <font size=2>
     * Output_System_Debug_Logs 通过System.debug输出
     * Output_Database_Logs 记录到Database
     * Output_Only_Specify_Class_Logs 仅记录指定Class的Logs，SpecifyClasses__c为指定的Class(逗号分隔)
     * UI_Show_Exception 界面显示异常
     * UI_Display_Detail_Exceptions 界面输出详细Exceptions
-    * UI_Display_Friendly_Exceptions 界面输出友好Exceptions【它的优先级高于详细】
+    * UI_Display_Friendly_Exceptions 界面输出友好Exceptions【它的优先级高于详细】</font>
 
 <a name="is-example"></a>
 ## 3、示例
@@ -370,6 +371,7 @@ try{
 * 可配置输出到UI呈现(结合apex:messages)
     <!-- ![](https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png) -->
     * <img src="https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png" width="50%">
+
 
 **注意**：可重写ApexLoggerExceptionHandler做自定义异常处理 
 <!-- <font style='font-weight:bold;color:red;' >注意</font>：可重写ApexLoggerExceptionHandler做自定义异常处理 --github不支持color -->
