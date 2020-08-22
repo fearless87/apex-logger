@@ -151,7 +151,7 @@ public ApexLogger(Boolean isBatch) {
 </details>
 
 <details>
-<summary>log 创建日志的重载</summary>
+<summary>LOG 创建日志的重载</summary>
 
 ~~~ C#
 /// <summary>
@@ -335,9 +335,19 @@ public virtual String getUIExceptionMessage() {
 <a name="is-example"></a>
 ## 3、示例
 ### （1）直接使用
-以info为列，debug、warn、error使用方式相同
+以info为列，debug、warn、error使用方式相同。
+* 逐个处理
+~~~ C#
+ApexLogger logger = new ApexLogger();
+String message=
+Exception thrownException=
+logger.info(message, thrownException);
+~~~
+* 批量处理
 ~~~ C#
 ApexLogger logger = new ApexLogger(true);//isBatch=true代表批量处理，结合flush()一次性提交
+String message=
+Exception thrownException=
 logger.debug(message);
 logger.info(message, thrownException);
 logger.info(messageFormat, arguments);
@@ -349,13 +359,17 @@ logger.flush();
 ### （2）结合try...catch使用
 ~~~ C#
 try{
-    Integer x=10;
-    Integer y=0;
-    Integer z=x/y;
+    ...
 }catch(Exception ex){
     new ApexLoggerExceptionHandler(ex);
 }
 ~~~
-可根据配置输出到System.debug、Database及UI呈现
-![](https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png)
+* 可配置输出到System.debug
+* 可配置输出到Database
+* 可配置输出到UI呈现(结合apex:messages)
+    <!-- ![](https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png) -->
+    * <img src="https://github.com/fearless87/apex-logger/blob/master/image/messages-error.png" width="50%">
+
+<!-- $\color{red}{注意}$：可重写ApexLoggerExceptionHandler做自定义异常处理 -->
+<font style='font-weight:bold;color:red;' >注意</font>：可重写ApexLoggerExceptionHandler做自定义异常处理
 
