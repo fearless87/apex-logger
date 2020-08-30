@@ -74,5 +74,3 @@ https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_de
 
 --推送Package到新的Scratch Org
 sfdx force:package:install --wait 10 --publishwait 10 --package OrgApexlogger@1.0.0-1 -k 1234567q -r -u OrgLambdaTest
-
-
